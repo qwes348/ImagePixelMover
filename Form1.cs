@@ -30,6 +30,11 @@ namespace ImagePixelMover
             savePathBox.Text = savePath;
         }
 
+        /// <summary>
+        /// 이미지 불러오기
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnLoadImageClicked(object sender, EventArgs e)
         {
             // 파일 선택창을 띄움
@@ -43,6 +48,10 @@ namespace ImagePixelMover
             }
         }
 
+        /// <summary>
+        /// 파일 선택 완료시 호출
+        /// </summary>
+        /// <param name="dialog"></param>
         private void OnFilesSelectComplete(CommonOpenFileDialog dialog)
         {            
             Image img = null;
@@ -53,7 +62,10 @@ namespace ImagePixelMover
             {
                 selectedFileNames = dialog.FileNames.ToList();
                 if (selectedFileNames == null || selectedFileNames.Count <= 0)
-                    throw new ArgumentException("선택된 파일이 없습니다.");
+                {
+                    MessageBox.Show("선택된 파일이 없습니다.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 for (int i = 0; i < selectedFileNames.Count; i++)
                 {
@@ -62,8 +74,7 @@ namespace ImagePixelMover
 
                 // 첫번째 이미지만 불러오기
                 img = Image.FromFile(selectedFileNames[0]);
-
-                // 이미지 객체를 복사해서 PictureBox에 넣음
+                // 불러온 첫번째 이미지 객체를 복사해서 크게보기 PictureBox에 넣음
                 ImagePictureBox.Image = (Image)img.Clone();
                 
                 for (int i = 0; i < selectedFileNames.Count; i++)
@@ -98,7 +109,7 @@ namespace ImagePixelMover
             {
                 img = Image.FromFile(path);
 
-                // 이미지 객체를 복사해서 PictureBox에 넣음
+                // 이미지 객체를 복사해서 크게보기 PictureBox에 넣음
                 ImagePictureBox.Image = (Image)img.Clone();
             }
             catch(Exception ex)
@@ -112,6 +123,11 @@ namespace ImagePixelMover
             }
         }
 
+        /// <summary>
+        /// 픽셀 이동
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnMovePixelButtonClicked(object sender, EventArgs e)
         {
             if(selectedFileNames == null || selectedFileNames.Count <= 0)
@@ -150,10 +166,15 @@ namespace ImagePixelMover
                 }
 
                 string fileName = Path.GetFileNameWithoutExtension(path);
-                newBmp.Save(Path.Combine(savePath, fileName) + ".png", ImageFormat.Png);
+                newBmp.Save(Path.Combine(savePathBox.Text, fileName) + ".png", ImageFormat.Png);
             }
         }
 
+        /// <summary>
+        /// 저장 경로 선택
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SavePathButtonClicked(object sender, EventArgs e)
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();

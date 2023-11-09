@@ -51,7 +51,7 @@ namespace ImagePixelMover
             // LoadImage
             // 
             this.LoadImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadImage.Location = new System.Drawing.Point(469, 420);
+            this.LoadImage.Location = new System.Drawing.Point(542, 416);
             this.LoadImage.Name = "LoadImage";
             this.LoadImage.Size = new System.Drawing.Size(187, 63);
             this.LoadImage.TabIndex = 0;
@@ -83,13 +83,13 @@ namespace ImagePixelMover
             this.ImagePictureBox.Location = new System.Drawing.Point(436, 166);
             this.ImagePictureBox.Name = "ImagePictureBox";
             this.ImagePictureBox.Size = new System.Drawing.Size(200, 200);
-            this.ImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ImagePictureBox.TabIndex = 3;
             this.ImagePictureBox.TabStop = false;
             // 
             // numericUpDown_movePixel_X
             // 
-            this.numericUpDown_movePixel_X.Location = new System.Drawing.Point(316, 420);
+            this.numericUpDown_movePixel_X.Location = new System.Drawing.Point(389, 416);
             this.numericUpDown_movePixel_X.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -107,7 +107,7 @@ namespace ImagePixelMover
             // movePixelLabel_X
             // 
             this.movePixelLabel_X.AutoSize = true;
-            this.movePixelLabel_X.Location = new System.Drawing.Point(230, 422);
+            this.movePixelLabel_X.Location = new System.Drawing.Point(303, 418);
             this.movePixelLabel_X.Name = "movePixelLabel_X";
             this.movePixelLabel_X.Size = new System.Drawing.Size(80, 15);
             this.movePixelLabel_X.TabIndex = 10;
@@ -116,7 +116,7 @@ namespace ImagePixelMover
             // movePixellabe_Y
             // 
             this.movePixellabe_Y.AutoSize = true;
-            this.movePixellabe_Y.Location = new System.Drawing.Point(230, 473);
+            this.movePixellabe_Y.Location = new System.Drawing.Point(303, 469);
             this.movePixellabe_Y.Name = "movePixellabe_Y";
             this.movePixellabe_Y.Size = new System.Drawing.Size(79, 15);
             this.movePixellabe_Y.TabIndex = 12;
@@ -124,7 +124,7 @@ namespace ImagePixelMover
             // 
             // numericUpDown_movePixel_Y
             // 
-            this.numericUpDown_movePixel_Y.Location = new System.Drawing.Point(316, 471);
+            this.numericUpDown_movePixel_Y.Location = new System.Drawing.Point(389, 467);
             this.numericUpDown_movePixel_Y.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -142,7 +142,7 @@ namespace ImagePixelMover
             // movePixelButton
             // 
             this.movePixelButton.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.movePixelButton.Location = new System.Drawing.Point(672, 420);
+            this.movePixelButton.Location = new System.Drawing.Point(745, 416);
             this.movePixelButton.Name = "movePixelButton";
             this.movePixelButton.Size = new System.Drawing.Size(188, 66);
             this.movePixelButton.TabIndex = 13;
@@ -170,9 +170,9 @@ namespace ImagePixelMover
             // 
             this.imagePathListView.HideSelection = false;
             this.imagePathListView.LargeImageList = this.imageList1;
-            this.imagePathListView.Location = new System.Drawing.Point(43, 110);
+            this.imagePathListView.Location = new System.Drawing.Point(12, 110);
             this.imagePathListView.Name = "imagePathListView";
-            this.imagePathListView.Size = new System.Drawing.Size(128, 393);
+            this.imagePathListView.Size = new System.Drawing.Size(285, 393);
             this.imagePathListView.SmallImageList = this.imageList1;
             this.imagePathListView.TabIndex = 15;
             this.imagePathListView.UseCompatibleStateImageBehavior = false;
