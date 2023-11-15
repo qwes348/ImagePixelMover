@@ -174,7 +174,21 @@ namespace ImagePixelMover
                 }
 
                 string fileName = Path.GetFileNameWithoutExtension(path);
-                newBmp.Save(Path.Combine(savePathBox.Text, fileName) + ".png", ImageFormat.Png);
+                string savePath = Path.Combine(savePathBox.Text, fileName + ".png");
+                FileInfo fi = new FileInfo(savePath);
+                // 같은 이름의 파일이 경로에 존재한다면
+                if(fi.Exists)
+                {
+                    int duplicateIndex = 0;
+                    while (fi.Exists)
+                    {
+                        savePath = Path.Combine(savePathBox.Text, string.Format(fileName + "({0})" + ".png", duplicateIndex));
+                        fi = new FileInfo(savePath);
+                        duplicateIndex++;
+                    }
+                }
+
+                newBmp.Save(fi.FullName, ImageFormat.Png);
             }
 
             MessageBox.Show("이미지 저장 완료", "완료!", MessageBoxButtons.OK, MessageBoxIcon.Information);
