@@ -43,6 +43,7 @@ namespace ImagePixelMover
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imagePathListView = new System.Windows.Forms.ListView();
             this.previewLabel = new System.Windows.Forms.Label();
+            this.clearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ImagePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_movePixel_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_movePixel_Y)).BeginInit();
@@ -51,9 +52,9 @@ namespace ImagePixelMover
             // LoadImage
             // 
             this.LoadImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoadImage.Location = new System.Drawing.Point(542, 416);
+            this.LoadImage.Location = new System.Drawing.Point(12, 110);
             this.LoadImage.Name = "LoadImage";
-            this.LoadImage.Size = new System.Drawing.Size(187, 63);
+            this.LoadImage.Size = new System.Drawing.Size(125, 39);
             this.LoadImage.TabIndex = 0;
             this.LoadImage.Text = "이미지 불러오기";
             this.LoadImage.UseVisualStyleBackColor = true;
@@ -78,9 +79,9 @@ namespace ImagePixelMover
             // 
             // ImagePictureBox
             // 
-            this.ImagePictureBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ImagePictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ImagePictureBox.BackColor = System.Drawing.Color.White;
-            this.ImagePictureBox.Location = new System.Drawing.Point(436, 166);
+            this.ImagePictureBox.Location = new System.Drawing.Point(588, 159);
             this.ImagePictureBox.Name = "ImagePictureBox";
             this.ImagePictureBox.Size = new System.Drawing.Size(200, 200);
             this.ImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -89,7 +90,8 @@ namespace ImagePixelMover
             // 
             // numericUpDown_movePixel_X
             // 
-            this.numericUpDown_movePixel_X.Location = new System.Drawing.Point(389, 416);
+            this.numericUpDown_movePixel_X.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.numericUpDown_movePixel_X.Location = new System.Drawing.Point(544, 422);
             this.numericUpDown_movePixel_X.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -106,8 +108,9 @@ namespace ImagePixelMover
             // 
             // movePixelLabel_X
             // 
+            this.movePixelLabel_X.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.movePixelLabel_X.AutoSize = true;
-            this.movePixelLabel_X.Location = new System.Drawing.Point(303, 418);
+            this.movePixelLabel_X.Location = new System.Drawing.Point(458, 424);
             this.movePixelLabel_X.Name = "movePixelLabel_X";
             this.movePixelLabel_X.Size = new System.Drawing.Size(80, 15);
             this.movePixelLabel_X.TabIndex = 10;
@@ -115,8 +118,9 @@ namespace ImagePixelMover
             // 
             // movePixellabe_Y
             // 
+            this.movePixellabe_Y.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.movePixellabe_Y.AutoSize = true;
-            this.movePixellabe_Y.Location = new System.Drawing.Point(303, 469);
+            this.movePixellabe_Y.Location = new System.Drawing.Point(458, 475);
             this.movePixellabe_Y.Name = "movePixellabe_Y";
             this.movePixellabe_Y.Size = new System.Drawing.Size(79, 15);
             this.movePixellabe_Y.TabIndex = 12;
@@ -124,7 +128,8 @@ namespace ImagePixelMover
             // 
             // numericUpDown_movePixel_Y
             // 
-            this.numericUpDown_movePixel_Y.Location = new System.Drawing.Point(389, 467);
+            this.numericUpDown_movePixel_Y.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.numericUpDown_movePixel_Y.Location = new System.Drawing.Point(544, 473);
             this.numericUpDown_movePixel_Y.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -141,8 +146,9 @@ namespace ImagePixelMover
             // 
             // movePixelButton
             // 
+            this.movePixelButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.movePixelButton.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.movePixelButton.Location = new System.Drawing.Point(745, 416);
+            this.movePixelButton.Location = new System.Drawing.Point(770, 422);
             this.movePixelButton.Name = "movePixelButton";
             this.movePixelButton.Size = new System.Drawing.Size(188, 66);
             this.movePixelButton.TabIndex = 13;
@@ -168,11 +174,14 @@ namespace ImagePixelMover
             // 
             // imagePathListView
             // 
+            this.imagePathListView.Alignment = System.Windows.Forms.ListViewAlignment.Default;
+            this.imagePathListView.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.imagePathListView.HideSelection = false;
             this.imagePathListView.LargeImageList = this.imageList1;
-            this.imagePathListView.Location = new System.Drawing.Point(12, 110);
+            this.imagePathListView.Location = new System.Drawing.Point(12, 159);
+            this.imagePathListView.MultiSelect = false;
             this.imagePathListView.Name = "imagePathListView";
-            this.imagePathListView.Size = new System.Drawing.Size(285, 393);
+            this.imagePathListView.Size = new System.Drawing.Size(389, 360);
             this.imagePathListView.SmallImageList = this.imageList1;
             this.imagePathListView.TabIndex = 15;
             this.imagePathListView.UseCompatibleStateImageBehavior = false;
@@ -180,12 +189,23 @@ namespace ImagePixelMover
             // 
             // previewLabel
             // 
+            this.previewLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.previewLabel.AutoSize = true;
-            this.previewLabel.Location = new System.Drawing.Point(433, 131);
+            this.previewLabel.Location = new System.Drawing.Point(585, 124);
             this.previewLabel.Name = "previewLabel";
             this.previewLabel.Size = new System.Drawing.Size(59, 15);
             this.previewLabel.TabIndex = 16;
             this.previewLabel.Text = "크게 보기";
+            // 
+            // clearButton
+            // 
+            this.clearButton.Location = new System.Drawing.Point(305, 110);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(95, 38);
+            this.clearButton.TabIndex = 17;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.OnClearButtonClicked);
             // 
             // Form1
             // 
@@ -193,6 +213,7 @@ namespace ImagePixelMover
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(1006, 531);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.previewLabel);
             this.Controls.Add(this.imagePathListView);
             this.Controls.Add(this.savePathButton);
@@ -233,6 +254,7 @@ namespace ImagePixelMover
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ListView imagePathListView;
         private System.Windows.Forms.Label previewLabel;
+        private System.Windows.Forms.Button clearButton;
     }
 }
 

@@ -55,33 +55,41 @@ namespace ImagePixelMover
         private void OnFilesSelectComplete(CommonOpenFileDialog dialog)
         {            
             Image img = null;
-            imagePathListView.Clear();
+            // 불러올떄마다 초기화X -> 초기화는 따로 버튼으로 뺌
+            ////imagePathListView.Clear();
             imagePathListView.View = View.List;
 
             try
             {
-                selectedFileNames = dialog.FileNames.ToList();
-                if (selectedFileNames == null || selectedFileNames.Count <= 0)
+                List<string> newSeletedFileNames = new List<string>();
+                newSeletedFileNames = dialog.FileNames.ToList();
+                if (newSeletedFileNames == null || newSeletedFileNames.Count <= 0)
                 {
                     MessageBox.Show("선택된 파일이 없습니다.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                for (int i = 0; i < selectedFileNames.Count; i++)
+                for (int i = 0; i < newSeletedFileNames.Count; i++)
                 {
-                    imageList1.Images.Add(Image.FromFile(selectedFileNames[i]));
+                    imageList1.Images.Add(Image.FromFile(newSeletedFileNames[i]));
                 }
 
                 // 첫번째 이미지만 불러오기
-                img = Image.FromFile(selectedFileNames[0]);
+                img = Image.FromFile(newSeletedFileNames[0]);
                 // 불러온 첫번째 이미지 객체를 복사해서 크게보기 PictureBox에 넣음
                 ImagePictureBox.Image = (Image)img.Clone();
                 
-                for (int i = 0; i < selectedFileNames.Count; i++)
+                for (int i = 0; i < newSeletedFileNames.Count; i++)
                 {
-                    ListViewItem item = new ListViewItem(selectedFileNames[i], i);
+                    ListViewItem item = new ListViewItem(newSeletedFileNames[i], i);
                     imagePathListView.Items.Add(item);
                 }
+
+                // 기존 불러온 이미지 경로 리스트에 이어서 추가
+                if (selectedFileNames == null)
+                    selectedFileNames = newSeletedFileNames;
+                else
+                    selectedFileNames.AddRange(newSeletedFileNames);
             }
             catch (Exception ex)
             {
@@ -168,6 +176,8 @@ namespace ImagePixelMover
                 string fileName = Path.GetFileNameWithoutExtension(path);
                 newBmp.Save(Path.Combine(savePathBox.Text, fileName) + ".png", ImageFormat.Png);
             }
+
+            MessageBox.Show("이미지 저장 완료", "완료!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
@@ -184,6 +194,16 @@ namespace ImagePixelMover
             {
                 savePath = dialog.FileName;
                 savePathBox.Text = savePath;
+            }
+        }
+
+        private void OnClearButtonClicked(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("불러온 이미지들을 초기화 하시겠습니까?", "초기화", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                imagePathListView.Clear();
+                if(selectedFileNames != null)
+                    selectedFileNames.Clear();
             }
         }
     }
